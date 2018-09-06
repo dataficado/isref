@@ -1,0 +1,16 @@
+# gensim stuff #
+#########
+*.dict
+*.lda
+*.id2word
+*.state
+*.npy
+bigramas
+trigramas
+
+# vscode stuff #
+########
+.vscode/
+
+# otros #
+*.csv
