@@ -14,6 +14,9 @@ El *FSS index* se calcula, para cada reporte, como la diferencia entre la cantid
 
  Para esto construyeron un [diccionario de palabras positivas y negativas](https://www.federalreserve.gov/econres/ifdp/files/ifdp1203-appendix.xlsx), considerando que el uso de las palabras tiene una connotación diferente, en el contexto de sentimiento de comunicaciones de estabilidad financiera, si se compara con su uso común y con otros diccionarios generales y financieros.
 
+ ### Nota
+No se busca replicar el Paper. Solo el proceso de cálculo aplicado a los informes del BanRep.
+
 ## Contenido
 - extraction.py
     - Se usa para extraer el texto de archivos pdf y word usando TIKA.
