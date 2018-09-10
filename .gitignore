@@ -14,3 +14,6 @@ trigramas
 
 # otros #
 *.csv
+
+# directorio de assets #
+assets/
