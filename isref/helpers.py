@@ -180,7 +180,7 @@ def model_ngrams(sentences):
     trig = Phrases(model_big[sentences], min_count=5, threshold=10)
     model_trig = Phraser(trig)
 
-    return dict(bigrams=model_big, trigrams=model_trig)
+    return dict(bigramas=model_big, trigramas=model_trig)
 
 
 def iter_sentences(directory, lang, other=None):
@@ -215,7 +215,7 @@ def iter_documents(ngrams, directory, lang, other=None):
 
     Parameters
     ----------
-    ngrams: dict (bigrams, trigrams)
+    ngrams: dict (bigramas, trigramas)
     directory: str
     lang: spacy.lang
     other: dict, optional (stopwords, postags, entities, stemmer)
@@ -224,8 +224,8 @@ def iter_documents(ngrams, directory, lang, other=None):
     ------
     list of str
     """
-    bigrams = ngrams['bigrams']
-    trigrams = ngrams['trigrams']
+    bigrams = ngrams['bigramas']
+    trigrams = ngrams['trigramas']
 
     for fpath in ordered_filepaths(directory):
         text = read_text(fpath)
