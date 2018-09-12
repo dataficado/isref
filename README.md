@@ -1,9 +1,9 @@
-# Indice de Sentimiento de Reportes de Estabilidad Financiera y su Lecturabilidad
+# Indices de Sentimiento y Medidas de complejidad del lenguaje - Aplicación a los Reportes de Estabilidad Financiera
 
 ## Objetivos
 Cálculo del *ISREF* para los Reportes de Estabilidad Financiera, producidos por el Banco de la República de Colombia, que han sido traducidos a inglés.
 
-Adicionalmente, calcular medidas de Lecturabilidad para cada reporte.
+Cálculo de medidas de Complejidad del Lenguaje para cada reporte.
 
 ## Antecedentes
 
@@ -42,7 +42,7 @@ Tika 1.18 es la última versión que va a correr con Java 7. Si a futuro se actu
 Se requiere [instalar los modelos](https://spacy.io/usage/models#section-install) que usa Spacy, la librería de Procesamiento de Lenguaje Natural, para procesar el texto dependiendo del idioma. Se pueden descargar como librerías del entorno de trabajo, pero si se va a usar para varios proyectos yo prefiero [descargar manualmente los modelos](https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.0.0/en_core_web_sm-2.0.0.tar.gz) y guardarlos en una carpeta desde la que puedo usarlos en cada proyecto mediante un [shorcut link](https://spacy.io/usage/models#usage).
 
 ## Contenido
-### extraction.py
+### [extraction.py](isref/extraction.py)
 Se usa para extraer el texto de archivos pdf y word usando TIKA.
 
 Crea una carpeta *corpus* en el directorio donde están los documentos originales, almacenando el texto de cada documento en un archivo txt.
@@ -54,13 +54,24 @@ Crea, si no existe, *procesados.csv* donde se incluye metadata de cada documento
 python extraction.py <ruta del directorio donde está el corpus>
 ````
 
+#### Notas
 Alternativamente se puede extraer el texto de cada documento usando software especializado de reconocimiento de texto. Esto resulta mejor para documentos que tienen mucho texto en gráficas, notas al pie, etc, ya que permiten seleccionar exactamente las partes que se quiere extraer.
 
 Ejemplo de selección de texto en software especializado:
 
 ![Ejemplo de selección de texto en software especializado](assets/filtered.png)
 
-### readability.py
+### [isref.py](isref/isref.py)
+Se usa para calcular el Indice de Sentimiento de cada Reporte de Estabilidad Financiera.
+
+Crea una carpeta *isref* en la carpeta en la que está este script. Dentro de ella, una carpeta para cada corpus al que se aplique el cálculo (reports, summaries, boxes).
+
+#### Modo de uso:
+````
+python isref.py <ruta del directorio donde están los documentos originales>
+````
+
+### [readability.py](isref/readability.py)
 Se usa para calcular medidas de complejidad del lenguaje de cada Reporte de Estabilidad Financiera.
 
 Crea una carpeta *readability* en la carpeta en la que está este script. Dentro de ella, una carpeta para cada corpus al que se aplique el cálculo (reports, summaries, boxes).
@@ -70,9 +81,10 @@ Crea una carpeta *readability* en la carpeta en la que está este script. Dentro
 python readability.py <ruta del directorio donde están los documentos originales>
 ````
 
-### helpers.py
+### [helpers.py](isref/helpers.py)
 Contiene funciones, variables y clases comunes que pueden ser usadas en diferentes archivos.
 
-Otros archivos la llaman con `import helpers as hp`
+Otros archivos la llaman con `import helpers as hp` para usarla.
 
-### notebooks exploratorios
+### [notebooks](isref/notebooks/)
+Se usan para ejercicios exploratorios. Antes de llegar a tener los archivos .py definitivos, se experimenta usando notebooks.
