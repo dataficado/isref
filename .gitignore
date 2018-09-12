@@ -14,3 +14,7 @@ trigramas
 
 # otros #
 *.csv
+
+# notebook stuff #
+notebooks/
+!notebooks/*.ipynb
