@@ -68,7 +68,7 @@ Crea una carpeta *isref* en la carpeta en la que está este script. Dentro de el
 
 #### Modo de uso:
 ````
-python isref.py <ruta del directorio donde están los documentos originales>
+python isref.py <ruta del directorio donde están los documentos originales> <ubicación de archivo json de palabras positivas y negativas> <ubicación de archivo excel de palabras a ignorar (stopwords)>
 ````
 
 ### [readability.py](isref/readability.py)
