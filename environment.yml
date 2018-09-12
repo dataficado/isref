@@ -117,7 +117,6 @@ dependencies:
     - bz2file==0.98
     - chardet==3.0.4
     - colorlover==0.2.1
-    - cufflinks==0.14.1
     - cymem==1.31.2
     - cytoolz==0.9.0.1
     - dill==0.2.8.2
