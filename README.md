@@ -54,6 +54,12 @@ Crea, si no existe, *procesados.csv* donde se incluye metadata de cada documento
 python extraction.py <ruta del directorio donde está el corpus>
 ````
 
+Alternativamente se puede extraer el texto de cada documento usando software especializado de reconocimiento de texto. Esto resulta mejor para documentos que tienen mucho texto en gráficas, notas al pie, etc, ya que permiten seleccionar exactamente las partes que se quiere extraer.
+
+Ejemplo de selección de texto en software especializado:
+
+![Ejemplo de selección de texto en software especializado](assets/filtered.png)
+
 ### readability.py
 Se usa para calcular medidas de complejidad del lenguaje de cada Reporte de Estabilidad Financiera.
 
