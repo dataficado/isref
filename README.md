@@ -1,10 +1,13 @@
-# Indice de Sentimiento de Reportes de Estabilidad Financiera
+# Indice de Sentimiento de Reportes de Estabilidad Financiera y su Lecturabilidad
 
-## Objetivo
+## Objetivos
 Cálculo del *ISREF* para los Reportes de Estabilidad Financiera, producidos por el Banco de la República de Colombia, que han sido traducidos a inglés.
+
+Adicionalmente, calcular medidas de Lecturabilidad para cada reporte.
 
 ## Antecedentes
 
+### FSS
 Investigadores de  la FED publicaron en 2017 un Discussion Paper llamado
 [Sentiment in Central Bank's Financial Stability Reports](https://www.federalreserve.gov/econres/ifdp/files/ifdp1203.pdf), en el que construyen un índice que mide el sentimiento expresado en el texto de los Reportes de Estabilidad Financiera publicados por diferentes bancos centrales en el período 2005 - 2015.
 
@@ -16,8 +19,11 @@ FSS = (negativas - positivas) / total
 
  Para esto construyeron un [diccionario de palabras positivas y negativas](https://www.federalreserve.gov/econres/ifdp/files/ifdp1203-appendix.xlsx), considerando que el uso de las palabras tiene una connotación diferente, en el contexto de sentimiento de comunicaciones de estabilidad financiera, si se compara con su uso común y con otros diccionarios generales y financieros.
 
- ### Nota
-No se busca replicar el Paper. Solo el proceso de cálculo del índice, aplicado a los informes del BanRep.
+### Lecturabilidad
+El [Paper 94](https://www.bis.org/publ/bppdf/bispap94.htm) del Bank for International Settlements contiene un [documento sobre la comunicación de políticas macroprudenciales](https://www.bis.org/publ/bppdf/bispap94c_rh.pdf), en el que mide la complejidad del lenguaje de los REF de un grupo de bancos centrales.
+
+### Nota
+No se busca replicar los documentos mencionados. Solo el proceso de cálculo del índice de sentimiento, y las medidas de complejidad del lenguaje (lecturabilidad), aplicados a los informes del BanRep.
 
 ## Requerimientos
 
@@ -46,6 +52,16 @@ Crea, si no existe, *procesados.csv* donde se incluye metadata de cada documento
 #### Modo de uso:
 ````
 python extraction.py <ruta del directorio donde está el corpus>
+````
+
+### readability.py
+Se usa para calcular medidas de complejidad del lenguaje de cada Reporte de Estabilidad Financiera.
+
+Crea una carpeta *readability* en la carpeta en la que está este script. Dentro de ella, una carpeta para cada corpus al que se aplique el cálculo (reports, summaries, boxes).
+
+#### Modo de uso:
+````
+python readability.py <ruta del directorio donde están los documentos originales>
 ````
 
 ### helpers.py
