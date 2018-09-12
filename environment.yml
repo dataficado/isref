@@ -111,6 +111,7 @@ dependencies:
   - pip:
     - astroid==2.0.4
     - atomicwrites==1.2.1
+    - autopep8==1.4
     - boto==2.49.0
     - boto3==1.8.9
     - botocore==1.11.9
@@ -140,6 +141,7 @@ dependencies:
     - pluggy==0.7.1
     - preshed==1.0.1
     - py==1.6.0
+    - pycodestyle==2.4.0
     - pyldavis==2.1.2
     - pylint==2.1.1
     - pytest==3.8.0
