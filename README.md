@@ -1,9 +1,11 @@
-# Indices de Sentimiento y Medidas de complejidad del lenguaje - Aplicación a los Reportes de Estabilidad Financiera
+# Indice de Sentimiento (ISREF) y Medidas de complejidad del lenguaje de los Reportes de Estabilidad Financiera
 
 ## Objetivos
-Cálculo del *ISREF* para los Reportes de Estabilidad Financiera, producidos por el Banco de la República de Colombia, que han sido traducidos a inglés.
+### Cálculo de indicadores
+Cálculo del *ISREF* para los reportes del Banco de la República que han sido traducidos a inglés, y cálculo de *medidas de Complejidad del Lenguaje* para cada reporte.
 
-Cálculo de medidas de Complejidad del Lenguaje para cada reporte.
+### Ayuda de memoria
+Servir como ayuda de memoria y referencia para quien necesite calcular los indicadores en el futuro. No asume conocimiento de Python.
 
 ## Antecedentes
 
@@ -26,6 +28,11 @@ El [Paper 94](https://www.bis.org/publ/bppdf/bispap94.htm) del Bank for Internat
 No se busca replicar los documentos mencionados. Solo el proceso de cálculo del índice de sentimiento, y las medidas de complejidad del lenguaje (lecturabilidad), aplicados a los informes del BanRep.
 
 ## Requerimientos
+
+### Código
+Descargar este repositorio (carpeta). Para quien no conoce GitHub, lo más fácil es descargar el archivo zip en esta página, descomprimirlo y guardarlo en su equipo. Para descargar usar el botón a la derecha, como se muestra en la imagen.
+
+![Imágen de descarga de carpeta zip](assets/repo_down.png)
 
 ### Python
 El archivo [environment.yml](environment.yml) detalla las diferentes librerías requeridas. Se recomienda instalar Python usando [Anaconda](https://www.anaconda.com/download/#windows) o [Miniconda](https://conda.io/miniconda.html).
