@@ -104,7 +104,6 @@ if __name__ == '__main__':
     logging.basicConfig(format=log_format, datefmt=log_datefmt,
                         level=logging.INFO, filename=logfile, filemode='w')
 
-
     with open(wdlist, encoding='utf-8') as f:
         diction = json.load(f, encoding='utf-8')
 
@@ -138,13 +137,29 @@ if __name__ == '__main__':
     logging.info(f'Usando archivo de palabras: {Path(wdlist).name}')
     logging.info(f'ISREF calculado para {len(isref.index)} documentos.')
 
+    # generar gráfica del ISREF
     fechas = pd.to_datetime(isref['doc'], format='%Y-%m-%d')
 
-    # generar gráfica del ISREF
-    trace = go.Scatter(x=fechas, y=isref['score'],)
+    axis = dict(
+        showline=True,
+        zeroline=True,
+        showgrid=True,
+        gridcolor='#ffffff',
+        automargin=True
+    )
+
+    trace = go.Scatter(x=fechas, y=isref['score'],
+                       line=dict(width=2, color='#b04553'),
+                       marker=dict(size=8, color='#b04553'),
+                       name='ISREF')
+
     layout = dict(title='Sentimiento de Reportes de Estabilidad Financiera',
-                  xaxis=dict(title='Fecha'),
-                  yaxis=dict(title='ISREF', hoverformat='.3f')
+                  width=800, height=600,
+                  xaxis=dict(axis, **dict(title='Fecha')),
+                  yaxis=dict(axis, **dict(title='ISREF', hoverformat='.3f')),
+                  showlegend=False,
+                  autosize=True,
+                  plot_bgcolor='rgba(228, 222, 249, 0.65)'
                   )
 
     fig = dict(data=[trace], layout=layout)
