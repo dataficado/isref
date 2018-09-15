@@ -141,14 +141,6 @@ if __name__ == '__main__':
     # generar gráfica del ISREF
     fechas = pd.to_datetime(isref['doc'], format='%Y-%m-%d')
 
-    axis = dict(
-        showline=True,
-        zeroline=True,
-        showgrid=True,
-        gridcolor='#ffffff',
-        automargin=True
-    )
-
     trace = go.Scatter(x=fechas, y=isref['score'],
                        line=dict(width=2, color='#b04553'),
                        marker=dict(size=8, color='#b04553'),
@@ -158,6 +150,14 @@ if __name__ == '__main__':
                            d=d, i=i) for d, i in zip(fechas, isref['score'])],
                        name='ISREF'
                        )
+
+    axis = dict(
+        showline=True,
+        zeroline=True,
+        showgrid=True,
+        gridcolor='#ffffff',
+        automargin=True
+    )
 
     layout = dict(title='Sentimiento de Reportes de Estabilidad Financiera',
                   xaxis=dict(axis, **dict(title='Fecha')),
