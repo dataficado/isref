@@ -31,7 +31,7 @@ No se busca replicar los documentos mencionados. Solo adaptar el proceso de cál
 ## Requerimientos
 
 ### Código
-Descargar este repositorio (carpeta). Para quien no conoce GitHub, lo más fácil es descargar el archivo zip en esta página, descomprimirlo y guardarlo en su equipo. Para descargar usar el botón a la derecha, como se muestra en la imagen.
+Descargar el archivo zip usando el botón que encuentra en la zona superior derecha de [esta página](https://github.com/gamunozbravo/isref), como se muestra en la imagen. Una vez descargado, descomprimirlo y guardarlo en su equipo.
 
 ![Imágen de descarga de carpeta zip](assets/repo_down.png)
 
@@ -63,12 +63,12 @@ Se usa para extraer el texto de archivos pdf y word usando TIKA. Esto sirve para
 
 #### Modo de uso:
 ````
-python extraction.py <ruta del directorio donde está el corpus>
+python extraction.py <ruta del directorio donde están los documentos>
 ````
 **Requiere que esté disponible (corriendo) el TIKA Rest Server. De lo contrario descargará una copia de internet**
 
 #### Notas
-También se puede extraer el texto de cada documento usando software especializado de reconocimiento de texto. Esto resulta mejor para documentos que tienen mucho texto en gráficas, notas al pie, etc, ya que permiten seleccionar exactamente las partes que se quiere extraer. Yo uso [FineReader OCR](https://www.abbyy.com/en-apac/finereader/pro-for-mac/) Pro cuando requiero seleccionar partes específicas de documentos.
+También se puede extraer el texto de cada documento usando software especializado de reconocimiento de texto. Esto resulta mejor para documentos que tienen mucho texto en gráficas, notas al pie, etc, ya que permiten seleccionar exactamente las partes que se quiere extraer. Yo uso [FineReader OCR Pro](https://www.abbyy.com/en-apac/finereader/pro-for-mac/) cuando requiero seleccionar partes específicas de documentos.
 
 Ejemplo de selección de texto en software especializado:
 
@@ -93,7 +93,7 @@ Se usa para calcular el Indice de Sentimiento de cada Reporte de Estabilidad Fin
 
 #### Modo de uso:
 ````
-python isref.py <ruta del directorio donde están los documentos originales> <ubicación de archivo json de palabras positivas y negativas> <ubicación de archivo excel de palabras a ignorar (stopwords)>
+python isref.py <ruta directorio documentos> <ruta archivo json palabras positivas-negativas> <ruta archivo excel stopwords>
 ````
 
 ### [readability.py](isref/readability.py)
@@ -111,13 +111,11 @@ Se usa para calcular medidas de complejidad del lenguaje de cada Reporte de Esta
 
 #### Modo de uso:
 ````
-python readability.py <ruta del directorio donde están los documentos originales>
+python readability.py <ruta directorio documentos>
 ````
 
 ### [helpers.py](isref/helpers.py)
-Contiene funciones, variables y clases comunes que pueden ser usadas en diferentes archivos.
-
-Otros archivos la llaman con `import helpers as hp` para usarla.
+Contiene funciones, variables y clases comunes que pueden ser usadas en diferentes scripts. Otros scripts la llaman con `import helpers as hp` para usarla.
 
 ### [notebooks](isref/notebooks/)
 Se usan para ejercicios exploratorios. Antes de llegar a tener los archivos .py definitivos, se experimenta usando notebooks.
