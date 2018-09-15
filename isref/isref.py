@@ -152,12 +152,16 @@ if __name__ == '__main__':
     trace = go.Scatter(x=fechas, y=isref['score'],
                        line=dict(width=2, color='#b04553'),
                        marker=dict(size=8, color='#b04553'),
-                       name='ISREF')
+                       mode='lines+markers',
+                       hoverinfo='text',
+                       hovertext=['Doc: {d:%Y-%m-%d}<br>ISREF: {i:.3f}'.format(
+                           d=d, i=i) for d, i in zip(fechas, isref['score'])],
+                       name='ISREF'
+                       )
 
     layout = dict(title='Sentimiento de Reportes de Estabilidad Financiera',
-                  width=800, height=600,
                   xaxis=dict(axis, **dict(title='Fecha')),
-                  yaxis=dict(axis, **dict(title='ISREF', hoverformat='.3f')),
+                  yaxis=dict(axis, **dict(title='ISREF')),
                   showlegend=False,
                   autosize=True,
                   plot_bgcolor='rgba(228, 222, 249, 0.65)'
