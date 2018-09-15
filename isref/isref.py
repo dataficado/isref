@@ -136,6 +136,7 @@ if __name__ == '__main__':
     logging.info(f'Usando documentos en directorio: {Path(dir_docs).name}')
     logging.info(f'Usando archivo de palabras: {Path(wdlist).name}')
     logging.info(f'ISREF calculado para {len(isref.index)} documentos.')
+    logging.info(f'Preprocesamiento usa: {list(extra.keys())}')
 
     # generar gráfica del ISREF
     fechas = pd.to_datetime(isref['doc'], format='%Y-%m-%d')
