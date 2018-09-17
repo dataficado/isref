@@ -52,6 +52,8 @@ Tika 1.18 es la última versión que va a correr con Java 7. Si a futuro se actu
 Se requiere [instalar los modelos](https://spacy.io/usage/models#section-install) que usa Spacy, la librería de Procesamiento de Lenguaje Natural, para procesar el texto dependiendo del idioma. Se pueden descargar como librerías del entorno de trabajo, pero si se va a usar para varios proyectos yo prefiero [descargar manualmente los modelos](https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.0.0/en_core_web_sm-2.0.0.tar.gz) y guardarlos en una carpeta desde la que puedo usarlos en cada proyecto mediante un [shorcut link](https://spacy.io/usage/models#usage).
 
 ## Contenido
+Algunos de los scrips mencionados a continuación contienen una sección de *Modo de uso*. Esto asume que se está ubicado en la carpeta que contiene el script en el momento de correrlo en la línea de comandos.
+
 ### [extraction.py](isref/extraction.py)
 Se usa para extraer el texto de archivos pdf y word usando TIKA. Esto sirve para un conjunto de documentos que no tenga tantas gráficas y pies de página. TIKA extrae todo el texto que encuentra, y si son documentos con muchas notas al pie y texto de gráficos este texto va a quedar incluido, lo cual generalmente no se quiere.
 
