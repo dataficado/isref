@@ -249,7 +249,7 @@ if __name__ == '__main__':
         autosize=True,
         title='Complejidad de lenguaje en Reportes de Estabilidad Financiera',
         margin=dict(t=100),
-        showlegend=False,
+        showlegend=True,
         xaxis1=dict(axis, **dict(domain=[0, 0.48], anchor='y1')),
         xaxis2=dict(axis, **dict(domain=[0.52, 1], anchor='y2')),
         yaxis1=dict(
