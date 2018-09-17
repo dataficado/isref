@@ -25,6 +25,8 @@ FSS = (negativas - positivas) / total
 ### Medidas de Complejidad del Lenguaje
 El [Paper 94](https://www.bis.org/publ/bppdf/bispap94.htm) del Bank for International Settlements contiene un [documento sobre la comunicación de políticas macroprudenciales](https://www.bis.org/publ/bppdf/bispap94c_rh.pdf), en el que mide la complejidad del lenguaje de los REF de un grupo de bancos centrales.
 
+Existen [diferentes medidas de complejidad](https://en.wikipedia.org/wiki/Readability), pero el documento del BIS se enfoca en dos: [Flesch Readability, y Flesh-Kinkaid Grade Level](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests). En la primera, mayores valores indican textos más fáciles de entender. En la segunda es lo contrario: el valor representa el número de años de educación requeridos para entender el texto, y por lo tanto a mayor número mayor dificultad. Estas medidas realmente fueron desarrolladas para medir legibilidad de textos a nivel primaria y secundaria, de tal forma que [hay que tomar con cuidado el resultado cuando se aplica a textos complejos](https://technaverbascripta.wordpress.com/2016/03/30/possible-uses-for-readability-formulas/).
+
 ### Nota
 No se busca replicar los documentos mencionados. Solo adaptar el proceso de cálculo del índice de sentimiento, y las medidas de complejidad del lenguaje.
 
@@ -59,7 +61,7 @@ Se usa para extraer el texto de archivos pdf y word usando TIKA. Esto sirve para
 #### output
 - Crea una carpeta *corpus* en el directorio donde están los documentos originales, almacenando el texto de cada documento en un archivo *txt*.
 
-- Crea, si no existe, *procesados.csv* dentro de la carpeta *corpus*, donde se incluye metadata de cada documento al que se le realize extracción. Si ya existe se actualiza con nuevas filas.
+- Crea, si no existe, *procesados.csv* dentro de la carpeta *corpus*, donde se incluye metadata de cada documento al que se le realize extracción. Si ya existe se actualiza con nuevas filas. Columnas: *nombre de archivo*, *fecha de creación de archivo*, *idioma*, *número de páginas*
 
 #### Modo de uso:
 ````
@@ -87,7 +89,7 @@ Se usa para calcular el Indice de Sentimiento de cada Reporte de Estabilidad Fin
 #### output
 - Crea una carpeta *isref* en la carpeta en la que está este script. Dentro de ella, una carpeta para cada corpus al que se aplique el cálculo (reports, summaries, boxes).
 
-- Crea *isref.csv* con el indicador para cada documento.
+- Crea *isref.csv* con el indicador para cada documento. Columnas: *documento*, *score*
 
 - Crea *isref.html* con gráfica del indicador.
 
@@ -95,6 +97,19 @@ Se usa para calcular el Indice de Sentimiento de cada Reporte de Estabilidad Fin
 ````
 python isref.py <ruta directorio documentos> <ruta archivo json palabras positivas-negativas> <ruta archivo excel stopwords>
 ````
+
+#### Notas
+Modificando el script se puede cambiar el tipo de preprocesamiento realizado sobre el texto: hay unos comentarios (líneas que empiezan con el signo #) que muestran las opciones. Son básicamente cuatro:
+
+*stopwords*: si excluyo palabras comunes.
+
+*entities*: si excluyo cierto tipo de "entidades" identificadas en el texto (personas, lugares, organizaciones)
+
+*postags*: si incluyo solo aquellas palabras que son verbos, sustantivos, adjetivos, etc. Basado en [Universal Dependencies](http://universaldependencies.org/u/pos/).
+
+*stemmer*: Si se busca la raíz de cada palabra.
+
+**Este script por default excluye stopwords y entities (personas y organizaciones)**.
 
 ### [readability.py](isref/readability.py)
 Se usa para calcular medidas de complejidad del lenguaje de cada Reporte de Estabilidad Financiera.
@@ -105,7 +120,7 @@ Se usa para calcular medidas de complejidad del lenguaje de cada Reporte de Esta
 #### output
 - Crea una carpeta *readability* en la carpeta en la que está este script. Dentro de ella, una carpeta para cada corpus al que se aplique el cálculo (reports, summaries, boxes).
 
-- Crea *readability.csv* con las medidas de complejidad para cada documento.
+- Crea *readability.csv* con las medidas de complejidad para cada documento. Columnas: *doc*, *grade*, *kincaid_grade*, *reading_ease*, *sentences*, *words*
 
 - Crea *readability.html* con gráfica y tabla de las medidas.
 
@@ -113,6 +128,11 @@ Se usa para calcular medidas de complejidad del lenguaje de cada Reporte de Esta
 ````
 python readability.py <ruta directorio documentos>
 ````
+
+#### Notas
+Acepta las mismas modificaciones mencionadas en notas de isref.py.
+
+**Este script por default excluye entities (personas y organizaciones)**.
 
 ### [helpers.py](isref/helpers.py)
 Contiene funciones, variables y clases comunes que pueden ser usadas en diferentes scripts. Otros scripts la llaman con `import helpers as hp` para usarla.
